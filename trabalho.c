@@ -65,7 +65,6 @@ void limparBuffer();
 int mostrarMenu(){
     int opcao;
     
-    
     printf("\n\n");
 
     printf("         ░░░░░██╗░█████╗░░██████╗░░█████╗░  ██████╗░░█████╗░\n");
@@ -137,6 +136,7 @@ int main() {
     case 1: {
         system("cls"); // Limpa a tela antes de reiniciar 
         char jogarNovamente;
+
     do {
         jogoDaMemoria(); // Inicia o jogo
 
@@ -334,10 +334,23 @@ void jogoDaMemoria() {
 
         // Entrada do jogador
         printf(BRIGHT_BLUE "Coordenadas do 1º número (linha coluna): " RESET);
-        scanf("%d %d", &x1, &y1);
+        if (scanf("%d %d", &x1, &y1) != 2) { //Verifica se foram digitados dois números inteiros
+            printf(BRIGHT_RED "Entrada inválida. Tente novamente.\n" RESET); //Erro de digitação, ex: 'e' ou ';'
+            limparBuffer(); 
+            Sleep(1500);
+            system("cls");
+            continue;
+        }
+        
         printf(BRIGHT_BLUE "Coordenadas do 2º número (linha coluna): " RESET);
-        scanf("%d %d", &x2, &y2);
-
+        if (scanf("%d %d", &x2, &y2) != 2) {
+            printf(BRIGHT_RED "Entrada inválida. Tente novamente.\n" RESET); 
+            limparBuffer();
+            Sleep(1500);
+            system("cls");
+            continue;
+        }
+       
         // Ajuste de coordenadas (usuário digita de 1 a 4)
         x1--; y1--;
         x2--; y2--;
@@ -346,7 +359,8 @@ void jogoDaMemoria() {
         if (x1 < 0 || x1 >= TAM || y1 < 0 || y1 >= TAM ||
             x2 < 0 || x2 >= TAM || y2 < 0 || y2 >= TAM ||
             (x1 == x2 && y1 == y2)) {
-            printf(BRIGHT_RED " (ㆆ_ㆆ) Coordenadas inválidas ou repetidas. Tente novamente.\n" RESET);
+            printf(BRIGHT_RED " (ㆆ_ㆆ) Coordenadas inválidas ou repetidas. Tente novamente.\n" RESET); //Erro de jogo, ex: '15'
+           
             Sleep(1500); //Espera  jogador ver o resultado e limpa a tela
             system("cls");
             continue;
@@ -403,6 +417,6 @@ printf("      " BRIGHT_RED "ＥＲＲＯＳ: %d\n " RESET,erro);
 }
 
 void limparBuffer() {
-    int c;
+    int c; //armazena temporariamente os caracteres lidos
     while ((c = getchar()) != '\n' && c != EOF) { }
 }
