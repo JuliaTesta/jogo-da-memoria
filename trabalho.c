@@ -3,7 +3,7 @@
     
     Membros do grupo:
     - Pedro Henrique Trindade
-    - Isabela Maria
+    - Isabella Maria
     - Julia Testa Matos
     
     Descrição: 
@@ -18,15 +18,14 @@
 
 #include <stdio.h> 
 #include <stdlib.h>
-#include <time.h>        // Para geração de números aleatórios baseada no tempo
-#include <windows.h>    // Para funções como Sleep(), system("cls") e Beep()
-#include <direct.h>     // Para obter o diretório onde o arquivo será salvo
-#include <string.h>     // Para a função strlen()
+#include <time.h>       // Para geração de números aleatórios baseada no tempo
+#include <windows.h>   // Para funções como Sleep(), system("cls") e Beep()
+#include <direct.h>    // Para obter o diretório onde o arquivo será salvo
+#include <string.h>    // Para a função strlen()
 
 
 // Definições de constantes
 #define TAM 4        // Tamanho do tabuleiro (4x4)
-#define COORD 5     // Tamanho usado na visualização com coordenadas (não usado diretamente no código)
 #define PARES 8     // Total de pares no jogo (8 pares -> 16 posições)
 
 // Definições de cores ANSI para tons claros e vibrantes
@@ -89,7 +88,7 @@ int mostrarMenu(){
     printf("          " BRIGHT_MAGENTA "3 - 𝐑𝐄𝐆𝐑𝐀𝐒 ✍(◔◡◔)\n" RESET);
     printf("          " BRIGHT_WHITE ""); // Inicia a cor para o scanf
     scanf("          %d", &opcao);
-    printf(RESET ""); // Reseta a cor após o scanf
+    printf(RESET); // Reseta a cor após o scanf
 
     return opcao; //retorna a opção escolhida
 }

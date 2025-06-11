@@ -1,0 +1,4 @@
+Nome: Julia
+Pontos: 1
+Erros: 9
+
